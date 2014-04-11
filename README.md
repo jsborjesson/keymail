@@ -37,6 +37,8 @@ There is a [running example](http://keymail-example.herokuapp.com/) with [source
 
 TODO
 
+- Install the gem
+- customize email message
 - length of passcodes
 - turn off passcodes (just ignore it in templates?)
 - set length of expiration time
