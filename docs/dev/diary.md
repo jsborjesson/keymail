@@ -6,7 +6,8 @@ would want to have this gem do.
 
 I immediately flushed out some of the use cases I didn't think of before.
 
-After that I started working on the README for the project (RDD-style).
+After that I started working on the README for the project (RDD-style),
+I also sketched on a couple of sequence diagrams and class diagrams.
 
 I also tried to get in the habit of making a milestone on Github for every
 Friday to keep track of the direction I was going in.
