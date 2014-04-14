@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class KeymailTest < ActiveSupport::TestCase
-  test "truth" do
-    assert_kind_of Module, Keymail
+describe Keymail do
+  it 'is a module' do
+    Keymail.must_be_kind_of Module
   end
 end

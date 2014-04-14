@@ -83,4 +83,5 @@ PLATFORMS
 
 DEPENDENCIES
   keymail!
+  minitest
   sqlite3
