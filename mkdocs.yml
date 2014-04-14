@@ -1,0 +1,4 @@
+site_name: Keymail
+repo_url: https://github.com/alcesleo/keymail/
+pages:
+- ['index.md', 'Home']
