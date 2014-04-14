@@ -24,3 +24,14 @@ class Minitest::Spec
   end
 
 end
+
+# A bit more dry validation tests
+#     m = Message.create(text: '')
+#     m.must_have_invalid :text
+module Minitest::Assertions
+  def assert_has_invalid(field, model)
+    model.must_be :invalid?
+    model.errors[field].must_be :present?
+  end
+end
+ActiveRecord::Base.infect_an_assertion :assert_has_invalid, :must_have_invalid
