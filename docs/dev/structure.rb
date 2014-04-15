@@ -1,3 +1,7 @@
+# This file is just a jotted down overview of how I am picturing the system.
+# It is not runnable, nor even syntactically correct, its only purpose is to
+# document my "class diagram" and main use case.
+
 class Token
   initialize(email)
   email
@@ -39,10 +43,10 @@ class Unauthenticated
   authenticated? # false
 end
 
+# main email at app/views/auth_mailer/log_in.html.erb
 class AuthMailer
   log_in(token)
 end
-
 
 # initializers/keymail.rb
 default_expiration_time = 10.minutes
