@@ -1,4 +1,4 @@
-# Keymail
+# Keymail [![Build Status](https://travis-ci.org/alcesleo/keymail.svg?branch=dev)](https://travis-ci.org/alcesleo/keymail)
 
 **UNDER CONSTRUCTION** - the contents of this file are written ahead of their implementation.
 
@@ -42,7 +42,7 @@ TODO
 - length of passcodes
 - turn off passcodes (just ignore it in templates?)
 - set length of expiration time
-- redirect on login 
+- redirect on login
 - `first_login?` to redirect to registration forms
 
 ## Installation
