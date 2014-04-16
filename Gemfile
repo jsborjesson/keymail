@@ -16,5 +16,6 @@ group :test do
   gem 'minifacture'
   gem 'database_cleaner'
   gem 'capybara_minitest_spec'
+  gem 'coveralls', require: false
   gem 'turn'
 end
