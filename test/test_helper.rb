@@ -35,3 +35,8 @@ module Minitest::Assertions
   end
 end
 ActiveRecord::Base.infect_an_assertion :assert_has_invalid, :must_have_invalid
+
+class Proc
+    infect_an_assertion :assert_difference, :must_change
+    infect_an_assertion :assert_no_difference, :wont_change
+end
