@@ -14,5 +14,6 @@ group :test do
   gem 'sqlite3'
   gem 'minitest'
   gem 'minifacture'
+  gem 'database_cleaner'
   gem 'turn'
 end
