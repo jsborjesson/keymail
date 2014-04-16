@@ -9,6 +9,8 @@ require "factories"
 
 Turn.config.natural = true
 
+DatabaseCleaner.strategy = :transaction
+
 Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
@@ -23,6 +25,8 @@ class Minitest::Spec
     alias_method :context, :describe
   end
 
+  before { DatabaseCleaner.start }
+  after { DatabaseCleaner.clean }
 end
 
 # A bit more dry validation tests
