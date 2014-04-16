@@ -27,7 +27,9 @@ way of doing things.
 I'll try to have a milestone on each Friday just to see that the project is
 going in the right direction.
 
-## Week 3
+## Week 3 14/4-14
+
+### Monday
 
 Starting to slowly TDD my way into the main use case in the gem. I'm not super comfortable
 with TDD yet so progress is very slow but steady.
@@ -37,3 +39,9 @@ migrations and have **no** client applications I need to be nice to, so I'm
 keeping them in a single migration and running it with `rake db:migrate:redo`.
 This keeps things tidy in the unstable startup phase, but I obviously have to
 make real migrations as soon as a stable release is out.
+
+### Wednesday
+
+Making the tests work are taking up 90% of my time, development is incredibly slow but
+I'm confident it is at least headed in the right direction. I'm fully committed to going
+down the rabbit hole of TDD at this point - I think it will be worth it.
