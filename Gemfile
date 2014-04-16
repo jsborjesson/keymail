@@ -15,5 +15,6 @@ group :test do
   gem 'minitest'
   gem 'minifacture'
   gem 'database_cleaner'
+  gem 'capybara_minitest_spec'
   gem 'turn'
 end
