@@ -1,6 +1,5 @@
 module Keymail
   class Token < ActiveRecord::Base
-
     before_create :generate_token
 
     validates_presence_of :email
@@ -8,6 +7,10 @@ module Keymail
 
     def expired?
       expires_at.past?
+    end
+
+    def url
+      Keymail::Engine.routes.url_helpers.authentication_link_url(url_key, host: 'localhost:3000')
     end
 
     def generate_token

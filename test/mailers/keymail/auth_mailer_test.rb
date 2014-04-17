@@ -14,9 +14,13 @@ module Keymail
       email.to.must_equal [token.email]
     end
 
-    it 'contains "log in" text' do
-      body.must_have_content 'log in'
+    it 'has the log in link' do
+      # TODO: link_to
+      body.must_have_content "http://localhost:3000/keymail/auth/#{token.url_key}"
     end
+
+    # it 'has the expiration date'
+    # it 'has the optional passcode'
 
   end
 end
