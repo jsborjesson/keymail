@@ -19,7 +19,9 @@ module Keymail
       body.must_have_content "http://localhost:3000/keymail/auth/#{token.url_key}"
     end
 
-    # it 'has the expiration date'
+    it 'has the expiration date' do
+      body.must_have_content "valid until #{token.expires_at}"
+    end
     # it 'has the optional passcode'
 
   end
