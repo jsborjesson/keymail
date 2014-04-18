@@ -41,5 +41,6 @@ indicated with a dot, because of RubyGems.(e.g `v0.1.0.pre`)
 
 - Make sure the tests pass
 - Make sure your working directory is clean
+- Document the high level changes in `CHANGELOG.md`
 - Bump the version in `lib/keymail/version.rb` and commit it
 - `rake release`
