@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    keymail (0.1.0)
+    keymail (0.1.0.alpha)
       rails (~> 4.0.4)
 
 GEM
