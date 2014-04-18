@@ -1,7 +1,7 @@
 # Keymail
 
-[![Build Status](https://travis-ci.org/alcesleo/keymail.svg?branch=dev)](https://travis-ci.org/alcesleo/keymail)
-[![Coverage Status](https://coveralls.io/repos/alcesleo/keymail/badge.png?branch=dev)](https://coveralls.io/r/alcesleo/keymail?branch=dev)
+[![Build Status](https://travis-ci.org/alcesleo/keymail.svg?branch=master)](https://travis-ci.org/alcesleo/keymail)
+[![Coverage Status](https://coveralls.io/repos/alcesleo/keymail/badge.png?branch=master)](https://coveralls.io/r/alcesleo/keymail?branch=master)
 
 **UNDER CONSTRUCTION** - the contents of this file are written ahead of their implementation.
 
