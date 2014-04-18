@@ -31,3 +31,15 @@ Then you can serve the website locally using:
     mkdocs serve
 
 Just keep the `mkdocs.yml` in sync and you should be all set.
+
+## Releases
+
+Versioning follows [SemVer](http://semver.org/), except prereleases are
+indicated with a dot, because of RubyGems.(e.g `v0.1.0.pre`)
+
+### Checklist
+
+- Make sure the tests pass
+- Make sure your working directory is clean
+- Bump the version in `lib/keymail/version.rb` and commit it
+- `rake release`
