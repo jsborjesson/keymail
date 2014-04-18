@@ -31,6 +31,8 @@ Inspired by [this article](http://notes.xoxco.com/post/27999787765/is-it-time-fo
 
 There is a [running example](http://keymail-example.herokuapp.com/) with [source code](https://github.com/alcesleo/keymail-example) available to look at.
 
+_It might be horribly slow on the first load since it's on a free Heroku account_
+
 ## Documentation
 
 [Documentation can be found here](http://alcesleo.github.io/keymail/).
