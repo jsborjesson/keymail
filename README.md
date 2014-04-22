@@ -5,9 +5,8 @@
 
 **UNDER CONSTRUCTION** - the contents of this file are written ahead of their implementation.
 
-**[Keymail][rubygems] is an authentication via email-system, meant to be an alternative to passwords.**
+**Keymail is an authentication via email-system, meant to be an alternative to passwords.**
 
-[rubygems]: https://rubygems.org/gems/keymail
 
 > #### This email was sent to you by [KeymailExample](http://keymail-example.herokuapp.com)
 >
@@ -27,15 +26,16 @@ This frees you both from the trouble of managing passwords, and the risk of dele
 
 Inspired by [this article](http://notes.xoxco.com/post/27999787765/is-it-time-for-password-less-login).
 
-## Example
+## Links
 
-There is a [running example](http://keymail-example.herokuapp.com/) with [source code](https://github.com/alcesleo/keymail-example) available to look at.
+**[Documentation][docs] | [Example app][example] ([source][example-source]) | [RubyGems][rubygems]**
 
-_It might be horribly slow on the first load since it's on a free Heroku account_
+_The example might take a long time to load the first time, it's on a free Heroku account._
 
-## Documentation
-
-[Documentation can be found here](http://alcesleo.github.io/keymail/).
+[docs]:           http://alcesleo.github.io/keymail/
+[example]:        http://keymail-example.herokuapp.com/
+[example-source]: https://github.com/alcesleo/keymail-example
+[rubygems]:       https://rubygems.org/gems/keymail
 
 ## Configuration
 
