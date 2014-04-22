@@ -1,21 +1,23 @@
 require 'test_helper'
 
-require 'minitest/mock'
-
 module Keymail
   describe AuthMailer do
 
     before do
       # Reset the list of sent email
       ActionMailer::Base.deliveries.clear
+      AuthMailer.log_in(token).deliver
     end
 
     let(:token) { Factory :token }
-    let(:email) { AuthMailer.log_in(token).deliver }
+    let(:email) { ActionMailer::Base.deliveries.last }
     let(:body) { email.body.raw_source }
 
-    it 'sends authentication email to the right address' do
+    it 'sends the email' do
       ActionMailer::Base.deliveries.wont_be :empty?
+    end
+
+    it 'sends authentication email to the right address' do
       email.to.must_equal [token.email]
     end
 
