@@ -5,7 +5,7 @@
 
 **UNDER CONSTRUCTION** - the contents of this file are written ahead of their implementation.
 
-**[Keymail][rubygems] is a simple password-replacement gem for Rails apps.**
+**[Keymail][rubygems] is an authentication via email-system, meant to be an alternative to passwords.**
 
 [rubygems]: https://rubygems.org/gems/keymail
 
