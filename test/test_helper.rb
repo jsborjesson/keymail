@@ -52,11 +52,3 @@ class Proc
     infect_an_assertion :assert_difference, :must_change
     infect_an_assertion :assert_no_difference, :wont_change
 end
-
-def sent_emails
-  ActionMailer::Base.deliveries
-end
-
-def last_email
-  ActionMailer::Base.deliveries.last
-end
