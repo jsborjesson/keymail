@@ -11,6 +11,10 @@ module Keymail
       it 'sends an email' do
         -> { Authentication.request('test@email.com') }.must_change 'ActionMailer::Base.deliveries.count', +1
       end
+
+      it 'raises an error if email is nil' do
+        -> { Authentication.request(nil) }.must_raise StandardError
+      end
     end
 
     context '.verify_url' do
