@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Vision - Keymail</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Keymail</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../getting-started/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../faq/">FAQ</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../developing/">Developing</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li class="active">
+                                <a href="./">Vision</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../structure/">Structure</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../diary/">Diary</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../../developing/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../structure/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/alcesleo/keymail/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#vision">Vision</a></li>
+        
+            <li><a href="#background">Background</a></li>
+        
+            <li><a href="#other-solutions">Other solutions</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="vision">Vision</h1>
+<h2 id="background">Background</h2>
+<p>People are generally bad at both coming up with, and remembering good
+passwords. Every time a list of passwords somehow gets leaked passwords like
+<code>password</code> and <code>12345</code> are among the most commonly used.</p>
+<p><strong>Using passwords brings no value in itself - the only thing we want is to be
+able to get in to our own stuff, and keep other people out.</strong> I firmly believe
+that passwords are a bad way of accomplishing this.</p>
+<h2 id="other-solutions">Other solutions</h2>
+<p><strong>OAuth</strong> is definitely a step in the right direction, but it has some
+anti-features:</p>
+<ul>
+<li>You rely on a systems you don't control for authentication, if they go
+     down your users can't log in.</li>
+<li>You often have to implement multiple OAuth providers to make sure everyone
+     can use your service, and in the worst case let them fall back to using passwords.</li>
+</ul>
+<p><strong>Password Managers</strong> are great, but I believe that they are fixing a problem
+that we should not have to begin with.</p>
+<p><strong>Using the same password everywhere:</strong> I won't even discuss this one.</p>
+<h3 id="using-email-as-authentication">Using email as authentication</h3>
+<p>This is the approach this project takes.</p>
+<p>A couple of articles (<a href="http://notes.xoxco.com/post/27999787765/is-it-time-for-password-less-login" title="Original article">original</a> and a <a href="http://notes.xoxco.com/post/28288684632/more-on-password-less-login" title="Follow up article">follow up</a>) has been written
+about this, and a <a href="https://nomorepasswordsjustemail.meteor.com/" title="Proof of concept">proof of concept</a> was made - but since then I
+haven't heard much about it. I really like this approach because it frees you
+from both dealing with third parties and remembering lots of passwords. It
+is also very simple and straight forward both for developers and users.</p>
+<p>I want to see this solution used in some real projects.</p>
+<h3 id="feature-goals">Feature goals</h3>
+<ul>
+<li>Easy installation in Rails apps as a Gem</li>
+<li>Ability to generate and send emails with login-links to users</li>
+<li>Send an optional temporary security code that can be manually entered to log in</li>
+<li>Expire log-in links after a given amount of time</li>
+</ul>
+</div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/base.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Structure - Keymail</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/prettify-1.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Keymail</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../getting-started/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../faq/">FAQ</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../developing/">Developing</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../vision/">Vision</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="./">Structure</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../diary/">Diary</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../vision/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../diary/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/alcesleo/keymail/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<p>This file is just a jotted down overview of how I am picturing the system.
+It is not runnable, nor even syntactically correct, its only purpose is to
+document my "class diagram" and main use case.</p>
+<pre class="prettyprint well"><code class="ruby">class Token
+  initialize(email)
+  email
+  url_key      # url safe token
+  passcode     # 6-10 digit code for humans
+  expires_at   # datetime
+  expired?
+  first_time?  # useful if sending different emails when registering
+  expired      # scope
+  redirect_url # alias next?
+  destroy_expired!
+  destroy_for_email!
+end
+
+module Authentication
+  request(email, first_time=false, expiration_time=10.minutes) # creates a Token and calls AuthMailer
+  verify_url(url_key) # returns Authenticated or Unauthenticated objects
+  verify_passcode(passcode)# returns Authenticated or Unauthenticated objects
+end
+
+class Authenticated
+  initialize(token)
+
+  # delegates to token
+  first_time?
+  email
+  redirect_url
+
+  authenticated? # true
+end
+
+# null object for Authenticated
+class Unauthenticated
+  # throws UnauthenticatedException on all these
+  first_time?
+  email
+  redirect_url
+
+  authenticated? # false
+end
+
+# main email at app/views/auth_mailer/log_in.html.erb
+class AuthMailer
+  log_in(token)
+end
+
+# initializers/keymail.rb
+default_expiration_time = 10.minutes
+
+# Usage in controller
+class AuthCtrl
+  def email
+    Keymail::Authentication.request(params[:email])
+  end
+
+  def log_in_link_clicked
+    auth = Keymail::Authentication.verify_url(params[:token])
+    if auth.authenticated?
+      u = User.where(email: auth.email).first_or_create
+      redirect_to auth.redirect_url || root_url
+    else
+      head :unauthorized
+    end
+  end
+end
+
+# More advanced example
+class User
+  auth_token # from railscast
+end
+
+class AuthCtrl
+  def email
+    first = User.exist?(email: params[:email])
+    Keymail::Authentication.request(params[:email], first)
+  end
+
+  def log_in_link_clicked
+    auth = Keymail::Authentication.verify_url(params[:token])
+    authenticate(auth)
+  end
+
+  def passcode_entered
+    auth = Keymail::Authentication.verify_passcode(params[:passcode])
+    authenticate(auth)
+  end
+
+  private
+  def authenticate(auth)
+    if auth.authenticated?
+      if auth.first_time?
+        u = User.create(email: auth.email)
+        log_in(u)
+        redirect_to registration_url
+      else
+        u = User.find_by(email: auth.email)
+        log_in(u)
+        redirect_to auth.redirect_url || root_url
+      end
+    else
+      head :unauthorized
+    end
+  end
+
+  def log_in(user)
+    cookies.permanent[:auth_token] = user.auth_token
+  end
+end
+</code></pre>
+
+</div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/base.js"></script>
+        
+    </body>
+</html>
