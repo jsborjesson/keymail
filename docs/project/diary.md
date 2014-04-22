@@ -45,3 +45,12 @@ make real migrations as soon as a stable release is out.
 Making the tests work are taking up 90% of my time, development is incredibly slow but
 I'm confident it is at least headed in the right direction. I'm fully committed to going
 down the rabbit hole of TDD at this point - I think it will be worth it.
+
+## Week 4
+
+### Tuesday
+
+Fixed a nasty order dependant bug in the tests.  `let` is lazy in Minitest, so
+it only actually sent the email if the email-variable is used - which it is in
+most of the tests, but in one I directly checked ActionMailer::Base.deliveries
+before using email, hence that test failed whenever it was run first.
