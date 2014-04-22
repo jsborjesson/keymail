@@ -27,7 +27,7 @@ way of doing things.
 I'll try to have a milestone on each Friday just to see that the project is
 going in the right direction.
 
-## Week 3 14/4-14
+## Week 3
 
 ### Monday
 
@@ -52,5 +52,7 @@ down the rabbit hole of TDD at this point - I think it will be worth it.
 
 Fixed a nasty order dependant bug in the tests.  `let` is lazy in Minitest, so
 it only actually sent the email if the email-variable is used - which it is in
-most of the tests, but in one I directly checked ActionMailer::Base.deliveries
+most of the tests, but in one I directly checked `ActionMailer::Base.deliveries`
 before using email, hence that test failed whenever it was run first.
+
+[commit](https://github.com/alcesleo/keymail/commit/4664247)

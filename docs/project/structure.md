@@ -1,7 +1,8 @@
-# This file is just a jotted down overview of how I am picturing the system.
-# It is not runnable, nor even syntactically correct, its only purpose is to
-# document my "class diagram" and main use case.
+This file is just a jotted down overview of how I am picturing the system.
+It is not runnable, nor even syntactically correct, its only purpose is to
+document my "class diagram" and main use case.
 
+```ruby
 class Token
   initialize(email)
   email
@@ -110,3 +111,4 @@ class AuthCtrl
     cookies.permanent[:auth_token] = user.auth_token
   end
 end
+```

@@ -2,6 +2,9 @@ site_name: Keymail
 repo_url: https://github.com/alcesleo/keymail/
 pages:
 - ['index.md', 'Home']
-- ['usage/getting-started.md', 'Usage', 'Getting Started']
-- ['usage/faq.md', 'Usage', 'FAQ']
-- ['development.md', 'Development']
+- ['getting-started.md', 'Getting Started']
+- ['faq.md', 'FAQ']
+- ['developing.md', 'Developing']
+- ['project/vision.md', 'Project', 'Vision']
+- ['project/structure.md', 'Project', 'Structure']
+- ['project/diary.md', 'Project', 'Diary']
