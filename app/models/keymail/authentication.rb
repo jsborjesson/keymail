@@ -1,8 +1,8 @@
 module Keymail
-  module Auth
+  module Authentication
     def self.request(email)
       # TODO: initializers for expires_at
-      token = Token.create(email: 'whatever', expires_at: 10.minutes.since)
+      token = Token.create(email: email, expires_at: 10.minutes.since)
       AuthMailer.log_in(token).deliver
     end
 
