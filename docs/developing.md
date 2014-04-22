@@ -12,11 +12,15 @@ To run all the tests:
 
     rake test
 
+They are also run on [Travis CI](https://travis-ci.org/alcesleo/keymail/builds)
+
 ### Code coverage
 
 Is generated automatically every time the tests are run, to open the statistics run:
 
     rake coverage
+
+You can read the statistics on [Coveralls](https://coveralls.io/r/alcesleo/keymail?branch=master)
 
 ## Documentation
 
