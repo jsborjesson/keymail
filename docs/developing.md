@@ -22,13 +22,20 @@ Is generated automatically every time the tests are run, to open the statistics 
 
 I'm generating this documentation using [MkDocs](https://github.com/tomchristie/mkdocs).
 
-To work on the documentation locally you first need to install it:
+```bash
+pip install mkdocs ghp-import
 
-    pip install mkdocs
+# serve the documentation site at localhost:4567
+mkdocs serve
 
-Then you can serve the website locally using:
+# generate docs in the site/ directory
+mkdocs build
 
-    mkdocs serve
+# publish to github pages
+ghp-import -p site
+```
+
+### Publishing
 
 Just keep the `mkdocs.yml` in sync and you should be all set.
 
