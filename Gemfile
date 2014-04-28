@@ -10,12 +10,17 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
+group :development do
+  gem 'pry'
+end
+
 group :test do
   gem 'sqlite3'
   gem 'minitest'
   gem 'minifacture'
   gem 'database_cleaner'
   gem 'capybara_minitest_spec'
+  gem 'capybara-email'
   gem 'coveralls', require: false
   gem 'turn'
 end
