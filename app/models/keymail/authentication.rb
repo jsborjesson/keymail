@@ -2,6 +2,8 @@ module Keymail
   module Authentication
     def self.request(email)
       # TODO: initializers for expires_at
+      raise StandardError, 'Email cannot be nil' if email.nil?
+
       token = Token.create(email: email, expires_at: 10.minutes.since)
       AuthMailer.log_in(token).deliver
     end

@@ -1,0 +1,8 @@
+<h1>Request authentication</h1>
+
+<%= form_tag request_email_path do %>
+  <%= label_tag :email %><br />
+  <%= text_field_tag :email, params[:email] %>
+
+  <%= submit_tag "Send email", data: { disable_with: "Sending email..." } %>
+<% end %>
