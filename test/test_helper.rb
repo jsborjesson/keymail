@@ -52,3 +52,14 @@ class Proc
     infect_an_assertion :assert_difference, :must_change
     infect_an_assertion :assert_no_difference, :wont_change
 end
+
+# Make the controller methods (get, post etc...) work
+class ControllerSpec < Minitest::Spec
+  include Rails.application.routes.url_helpers
+  include ActionController::TestCase::Behavior
+
+  before do
+    @routes = Rails.application.routes
+  end
+end
+Minitest::Spec.register_spec_type(/Controller$/, ControllerSpec)
