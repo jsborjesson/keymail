@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/alcesleo/keymail.svg?branch=master)](https://travis-ci.org/alcesleo/keymail)
 [![Coverage Status](https://coveralls.io/repos/alcesleo/keymail/badge.png?branch=master)](https://coveralls.io/r/alcesleo/keymail?branch=master)
+[![Gem Version](https://badge.fury.io/rb/keymail.svg)](http://badge.fury.io/rb/keymail)
 
 **UNDER CONSTRUCTION** - the contents of this file are written ahead of their implementation.
 
