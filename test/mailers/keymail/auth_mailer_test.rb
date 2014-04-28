@@ -23,7 +23,7 @@ module Keymail
 
     it 'has the log in link' do
       # TODO: link_to
-      body.must_have_content "http://localhost:3000/keymail/auth/#{token.url_key}"
+      body.must_have_content "http://localhost:3000/auth/#{token.url_key}"
     end
 
     it 'has the expiration date' do
