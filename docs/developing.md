@@ -39,14 +39,12 @@ mkdocs build
 ghp-import -p site
 ```
 
-### Publishing
-
-Just keep the `mkdocs.yml` in sync and you should be all set.
+Make sure you keep the `mkdocs.yml` in sync and you should be all set.
 
 ## Releases
 
 Versioning follows [SemVer](http://semver.org/), except prereleases are
-indicated with a dot, because of RubyGems.(e.g `v0.1.0.pre`)
+indicated with a dot, because of RubyGems (e.g `v0.1.0.pre`).
 
 ### Checklist
 

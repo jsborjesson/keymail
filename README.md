@@ -38,30 +38,7 @@ _The example might take a long time to load the first time, it's on a free Herok
 [example-source]: https://github.com/alcesleo/keymail-example
 [rubygems]:       https://rubygems.org/gems/keymail
 
-## Configuration
-
-TODO
-
-- Install the gem
-- customize email message
-- length of passcodes
-- turn off passcodes (just ignore it in templates?)
-- set length of expiration time
-- redirect on login
-- `first_login?` to redirect to registration forms
 
 ## Installation
 
-See the [documentation] for more information
-
-- setup emailing
-
-## Security
-
-- Cookie stealing, always use https
-- open source secret_token.rb
-
-## Releases
-
-Follow [SemVer](http://semver.org/)
-
+See the [getting started guide](http://alcesleo.github.io/keymail/getting-started/) to set it up!
