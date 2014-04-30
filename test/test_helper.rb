@@ -70,10 +70,5 @@ class AcceptanceSpec < MiniTest::Spec
   include Rails.application.routes.url_helpers
   include Capybara::DSL
   include Capybara::Email::DSL
-
-  # before do
-  #   @routes = Rails.application.routes
-  # end
-
 end
 MiniTest::Spec.register_spec_type(/Integration$/, AcceptanceSpec)
