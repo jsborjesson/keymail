@@ -5,6 +5,7 @@ test/dummy/db/
 test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
+test/dummy/config/initializers/setup_mail.rb
 coverage/
 site/
 *.gem
