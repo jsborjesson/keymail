@@ -18,6 +18,12 @@ describe 'Feature Integration' do
     page.must_have_content 'success'
   end
 
+  it 'only works once' do
+    current_email.first(:link).click
+    current_email.first(:link).click
+    page.must_have_content 'failed'
+  end
+
   # it 'logs in a user with an optional passcode'
 
 end
