@@ -7,6 +7,7 @@ class AuthController < ApplicationController
     if params[:email].nil?
       redirect_to :root
     else
+      @email = params[:email]
       Keymail::Authentication.request(params[:email])
     end
   end
@@ -14,6 +15,7 @@ class AuthController < ApplicationController
   def validate_link
     result = Keymail::Authentication.verify_url_key(params[:url_key])
     if result.authenticated?
+      session[:success_email] = result.email
       redirect_to :success
     else
       redirect_to :fail
@@ -21,11 +23,12 @@ class AuthController < ApplicationController
 
   end
 
-#   def fail
-#   end
-#
-#   def sucess
-#   end
+  def fail
+  end
+
+  def success
+    @email = session[:success_email]
+  end
 
 
   # def validate_passcode
