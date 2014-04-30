@@ -52,8 +52,9 @@ indicated with a dot, because of RubyGems.(e.g `v0.1.0.pre`)
 
 - Make sure the tests pass
 - Make sure the documentation is correct
-- Make sure your working directory is clean
-- Document the high level changes in `CHANGELOG.md`
-- Bump the version in `lib/keymail/version.rb`, `bundle` and commit it
+- Make a commit with these contents unless it's done already:
+    - Document the high level changes in `CHANGELOG.md`
+    - Bump the version in `lib/keymail/version.rb`
+    - `bundle` will set the new version in `Gemfile.lock`
 - `rake release`
-- If needed, update keymail-example to reflect the changes
+- If needed, update keymail-example to reflect the changes, then make a tag with the same version as the release
