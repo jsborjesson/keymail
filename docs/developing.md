@@ -54,6 +54,6 @@ indicated with a dot, because of RubyGems.(e.g `v0.1.0.pre`)
 - Make sure the documentation is correct
 - Make sure your working directory is clean
 - Document the high level changes in `CHANGELOG.md`
-- Bump the version in `lib/keymail/version.rb` and commit it
+- Bump the version in `lib/keymail/version.rb`, `bundle` and commit it
 - `rake release`
 - If needed, update keymail-example to reflect the changes
