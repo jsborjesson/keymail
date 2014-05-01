@@ -2,9 +2,9 @@
 
 ## Testing
 
-Testing is done with [Minitest](https://github.com/seattlerb/minitest/) using the spec syntax and
-[Minifacture](https://github.com/stephencelis/minifacture) for factories. It's supposed to be as
-minimal and readable as possible. You can see a full history of tests [here](https://travis-ci.org/alcesleo/keymail/builds).
+Testing is done with [Minitest](https://github.com/seattlerb/minitest/) using
+the spec syntax and [Minifacture](https://github.com/stephencelis/minifacture)
+for factories. It's supposed to be as minimal and readable as possible.
 
 ### Running the tests
 
@@ -12,21 +12,22 @@ To run all the tests:
 
     rake test
 
-They are also run on [Travis CI](https://travis-ci.org/alcesleo/keymail/builds)
+They are also run on [Travis CI](https://travis-ci.org/alcesleo/keymail/builds), you can see test statistics for all builds there.
 
 ### Code coverage
 
-Is generated automatically every time the tests are run, to open the statistics run:
+Is generated automatically every time the tests are run, to open the local statistics run:
 
     rake coverage
 
-You can read the statistics on [Coveralls](https://coveralls.io/r/alcesleo/keymail?branch=master)
+They are also run on [Coveralls](https://coveralls.io/r/alcesleo/keymail?branch=master), you can see code coverage statistics for all builds there.
 
 ## Documentation
 
 I'm generating this documentation using [MkDocs](https://github.com/tomchristie/mkdocs).
 
 ```bash
+# install tools
 pip install mkdocs ghp-import
 
 # serve the documentation site at localhost:4567
