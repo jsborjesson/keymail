@@ -24,7 +24,7 @@
 >
 > The codes above are valid until _2014-04-10 18:35_
 
-This frees you both from the trouble of managing passwords, and the risk of delegating to a third party (like OAuth).
+This frees you both from the trouble of managing passwords, and the risks of delegating to a third party (like OAuth).
 
 Inspired by [this article](http://notes.xoxco.com/post/27999787765/is-it-time-for-password-less-login).
 
