@@ -10,7 +10,7 @@ module Keymail
 
     def self.verify_url_key(url_key)
       token = Token.find_by(url_key: url_key)
-      token.destroy! unless token.nil?
+      token.destroy! unless token.nil? # this does not destroy the reference, only the entry
 
       return Failure.new if token.nil?
       return Expired.new(token) if token.expired?
