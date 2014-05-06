@@ -4,12 +4,18 @@ module Keymail
   describe Authentication do
     context '.request' do
 
+      let(:email) { 'test@email.com' }
+
       it 'creates a new token' do
-        -> { Authentication.request('test@email.com') }.must_change 'Token.count', +1
+        -> { Authentication.request(email) }.must_change 'Token.count', +1
+      end
+
+      it 'returns the token on success' do
+        Authentication.request(email).must_be_kind_of Token
       end
 
       it 'sends an email' do
-        -> { Authentication.request('test@email.com') }.must_change 'ActionMailer::Base.deliveries.count', +1
+        -> { Authentication.request(email) }.must_change 'ActionMailer::Base.deliveries.count', +1
       end
 
       it 'raises an error if email is nil' do
