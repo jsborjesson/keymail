@@ -75,3 +75,13 @@ _28/4 - 4/5_
 
 Trying to integrate what I have into the example and document what I do as the
 "getting started" guide.
+
+## Week 6
+
+_5/5 - 11/5_
+
+### Tuesday
+
+TDD is starting to feel natural and work is finally going very smoothly. I'm beginning
+to have the basic functions completed and work on getting the example application running
+and documentation.
