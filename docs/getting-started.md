@@ -61,11 +61,11 @@ a couple of routes:
 Rails.application.routes.draw do
 
   root 'auth#new'
-  post 'request_email', to: 'auth#request_email'
+  post 'request_email', to: 'sessions#request_authentication_email'
 
   # specifying `as: 'keymail_link_target'` here is very important, it is used
-  # internally to generate the link
-  get  'auth/:url_key', to: 'auth#validate_link', as: 'keymail_link_target'
+  # internally to generate the authentication link
+  get  'auth/:url_key', to: 'sessions#validate_authentication_link', as: 'keymail_link_target'
 
 end
 ```
