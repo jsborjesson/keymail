@@ -1,5 +1,10 @@
 # Releases
 
+## v0.2.1
+
+- No longer hardcoding `localhost:3000` as the base url for authentication links
+- `Authentication.request` raises `ArgumentError` instead of `StandardError` when missing email
+
 ## v0.2.0
 
 - `Authentication.request` now returns the token it cretes
