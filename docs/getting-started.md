@@ -70,6 +70,18 @@ Rails.application.routes.draw do
 end
 ```
 
+You also need to explicitly state the host in the environment configurations:
+
+```
+# config/environments/development.rb
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
+# config/environments/production.rb
+Rails.application.routes.default_url_options[:host] = 'http://keymail-example.herokuapp.com'
+```
+
+Failing to set these will lead to **"Missing host to link to"** errors.
+
 
 Keymail provides you with a service class: `Keymail::Authentication` that you
 can use in your controllers to do everything that keymail does, here is a basic
