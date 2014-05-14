@@ -10,8 +10,7 @@ module Keymail
     end
 
     def url
-      # TODO: Don't hardcode host
-      Rails.application.routes.url_helpers.keymail_link_target_url(url_key, host: 'localhost:3000')
+      Rails.application.routes.url_helpers.keymail_link_target_url(url_key)
     end
 
     def generate_token
