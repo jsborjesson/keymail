@@ -19,7 +19,7 @@ module Keymail
       end
 
       it 'raises an error if email is nil' do
-        -> { Authentication.request(nil) }.must_raise StandardError
+        -> { Authentication.request(nil) }.must_raise ArgumentError
       end
     end
 
