@@ -147,6 +147,10 @@
         
             <li><a href="#week-4">Week 4</a></li>
         
+            <li><a href="#week-5">Week 5</a></li>
+        
+            <li><a href="#week-6">Week 6</a></li>
+        
     
     </ul>
 </div></div>
@@ -155,11 +159,14 @@
 <h1 id="diary">Diary</h1>
 <p>I'll write a little every week on how the project is progressing, sort
 of like a sprint retrospective.</p>
+<p><em>It begins in the first week of April 2014</em></p>
 <h2 id="week-1">Week 1</h2>
+<p><em>31/3 - 6/4</em></p>
 <p>First I started building a simple proof of concept in a normal Rails app,
 hacking together a working example was as easy as I could have hoped for.</p>
 <p>I immediately flushed out some of the use cases I didn't think of before.</p>
 <h2 id="week-2">Week 2</h2>
+<p><em>7/4 - 13/4</em></p>
 <p>I made a <code>keymail-example</code> app, (a message board) to have something real to
 install the gem in, at this moment completely lacking login functionality -
 this will be part of the gem.</p>
@@ -172,6 +179,7 @@ way of doing things.</p>
 <p>I'll try to have a milestone on each Friday just to see that the project is
 going in the right direction.</p>
 <h2 id="week-3">Week 3</h2>
+<p><em>14/4 - 20/4</em></p>
 <h3 id="monday">Monday</h3>
 <p>Starting to slowly TDD my way into the main use case in the gem. I'm not super comfortable
 with TDD yet so progress is very slow but steady.</p>
@@ -185,12 +193,24 @@ make real migrations as soon as a stable release is out.</p>
 I'm confident it is at least headed in the right direction. I'm fully committed to going
 down the rabbit hole of TDD at this point - I think it will be worth it.</p>
 <h2 id="week-4">Week 4</h2>
+<p><em>21/4 - 27/4</em></p>
 <h3 id="tuesday">Tuesday</h3>
 <p>Fixed a nasty order dependant bug in the tests.  <code>let</code> is lazy in Minitest, so
 it only actually sent the email if the email-variable is used - which it is in
 most of the tests, but in one I directly checked <code>ActionMailer::Base.deliveries</code>
 before using email, hence that test failed whenever it was run first.</p>
 <p><a href="https://github.com/alcesleo/keymail/commit/4664247">commit</a></p>
+<h2 id="week-5">Week 5</h2>
+<p><em>28/4 - 4/5</em></p>
+<h3 id="wednesday_1">Wednesday</h3>
+<p>Trying to integrate what I have into the example and document what I do as the
+"getting started" guide.</p>
+<h2 id="week-6">Week 6</h2>
+<p><em>5/5 - 11/5</em></p>
+<h3 id="tuesday_1">Tuesday</h3>
+<p>TDD is starting to feel natural and work is finally going very smoothly. I'm beginning
+to have the basic functions completed and work on getting the example application running
+and documentation.</p>
 </div>
         </div>
 

@@ -139,7 +139,13 @@
     
         <li class="main active"><a href="#getting-started">Getting started</a></li>
         
-            <li><a href="#installation">Installation</a></li>
+            <li><a href="#installating-the-gem">Installating the gem</a></li>
+        
+            <li><a href="#emailing">Emailing</a></li>
+        
+            <li><a href="#routes">Routes</a></li>
+        
+            <li><a href="#controller">Controller</a></li>
         
     
     </ul>
@@ -147,40 +153,97 @@
             <div class="col-md-9" role="main">
 
 <h1 id="getting-started">Getting started</h1>
-<h2 id="installation">Installation</h2>
-<p>To install keymail, put this in your gemfile:</p>
+<p>This guide will take you through installing and configuring Keymail in a
+Rails application. To see a more realistic example, you can look at the <a href="https://github.com/alcesleo/keymail-example">example app</a>.</p>
+<h2 id="installating-the-gem">Installating the gem</h2>
+<p>To install keymail, put this in your <code>Gemfile</code>:</p>
 <pre class="prettyprint well"><code class="ruby">gem 'keymail'
 </code></pre>
 
-<p>And make sure you mount it in your <code>config/routes.rb</code>:</p>
-<pre class="prettyprint well"><code class="ruby">Rails.application.routes.draw do
+<p>Then run this to install it:</p>
+<pre class="prettyprint well"><code class="bash"># install the gem
+bundle
 
-  mount Keymail::Engine =&gt; &quot;/keymail&quot;
-end
+# install the gems migrations
+rake keymail:install:migrations
+rake db:migrate
 </code></pre>
 
-<ul>
-<li>run the migrations</li>
-</ul>
-<h3 id="mailing">Mailing</h3>
-<p>TODO: configure "from"-email</p>
-<p>Your app needs to be able to send emails, the fastest way is probably to use
-a GMail account, then you just need to create an initializer file, for exaple
-<code>config/initializers/setup_mail.rb</code> with contents like this:</p>
+<h2 id="emailing">Emailing</h2>
+<p>Your application obviously needs to be able to send emails, if you have not
+already configured this, the fastest way to get started is to use a GMail
+account, just create a <code>config/initializers/setup_mail.rb</code> file with contents
+like this:</p>
 <pre class="prettyprint well"><code class="ruby">ActionMailer::Base.smtp_settings = {
   :address              =&gt; &quot;smtp.gmail.com&quot;,
   :port                 =&gt; 587,
   :domain               =&gt; &quot;gmail.com&quot;,
-  :user_name            =&gt; &quot;rails.keymail&quot;,
+  :user_name            =&gt; &quot;your_username&quot;,
   :password             =&gt; &quot;your_password&quot;
   :authentication       =&gt; &quot;plain&quot;,
   :enable_starttls_auto =&gt; true
 }
-ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
 </code></pre>
 
-<p>NOTE: You should not commit your passwords to a public Github repo, use something
-like <a href="https://github.com/laserlemon/figaro">Figaro</a> to keep it out of source control.</p>
+<p><em>You should <strong>not</strong> commit your passwords to a public Github repo, use
+something like <a href="https://github.com/laserlemon/figaro">Figaro</a> to keep it out of
+source control (the <a href="https://github.com/alcesleo/keymail-example">example app</a> does this).</em></p>
+<p>You also need to tell Keymail that you want to send emails from this address.
+Create a <code>config/initializers/setup_keymail.rb</code>:</p>
+<pre class="prettyprint well"><code class="ruby">Keymail.setup do |config|
+  config.from_email = 'your_username@gmail.com'
+end
+</code></pre>
+
+<h2 id="routes">Routes</h2>
+<p>To actually use Keymail you need to wire it up to a controller, at this time
+this is completely manual but this might change in the future. First you need
+to set up a couple of routes:</p>
+<pre class="prettyprint well"><code class="ruby"># config/routes.rb
+Rails.application.routes.draw do
+
+  root 'auth#new'
+  post 'request_email', to: 'sessions#request_authentication_email'
+
+  # specifying `as: 'keymail_link_target'` here is very important, it is used
+  # internally to generate the authentication link
+  get  'auth/:url_key', to: 'sessions#validate_authentication_link', as: 'keymail_link_target'
+
+end
+</code></pre>
+
+<p>You also need to explicitly state the host in the environment configurations:</p>
+<pre class="prettyprint well"><code># config/environments/development.rb
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
+# config/environments/production.rb
+Rails.application.routes.default_url_options[:host] = 'http://keymail-example.herokuapp.com'
+</code></pre>
+
+<p>Failing to set these will lead to <strong>"Missing host to link to"</strong> errors.</p>
+<h2 id="controller">Controller</h2>
+<p>Keymail provides you with a service class: <code>Keymail::Authentication</code> that you
+can use in your controllers to do everything that keymail does, here is a basic
+use case (without error handling!):</p>
+<pre class="prettyprint well"><code class="ruby">class SessionsController &lt; ApplicationController
+
+  def request_authentication_email
+    Keymail::Authentication.request(params[:email])
+  end
+
+  def validate_authentication_link
+    result = Keymail::Authentication.verify_url_key(params[:url_key])
+    if result.authenticated?
+      redirect_to :success
+    else
+      redirect_to :fail
+    end
+  end
+
+end
+</code></pre>
+
+<p>You can of course see all of this in working code by checking out the <a href="https://github.com/alcesleo/keymail-example">example app</a>.</p>
 </div>
         </div>
 

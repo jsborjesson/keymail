@@ -152,20 +152,23 @@
 
 <h1 id="developing">Developing</h1>
 <h2 id="testing">Testing</h2>
-<p>Testing is done with <a href="https://github.com/seattlerb/minitest/">Minitest</a> using the spec syntax and
-<a href="https://github.com/stephencelis/minifacture">Minifacture</a> for factories. It's supposed to be as
-minimal and readable as possible. You can see a full history of tests <a href="https://travis-ci.org/alcesleo/keymail/builds">here</a>.</p>
+<p>Testing is done with <a href="https://github.com/seattlerb/minitest/">Minitest</a> using
+the spec syntax and <a href="https://github.com/stephencelis/minifacture">Minifacture</a>
+for factories. It's supposed to be as minimal and readable as possible.</p>
 <h3 id="running-the-tests">Running the tests</h3>
 <p>To run all the tests:</p>
 <pre class="prettyprint well"><code>rake test
 </code></pre>
+<p>They are also run on <a href="https://travis-ci.org/alcesleo/keymail/builds">Travis CI</a>, you can see test statistics for all builds there.</p>
 <h3 id="code-coverage">Code coverage</h3>
-<p>Is generated automatically every time the tests are run, to open the statistics run:</p>
+<p>Is generated automatically every time the tests are run, to open the local statistics run:</p>
 <pre class="prettyprint well"><code>rake coverage
 </code></pre>
+<p>They are also run on <a href="https://coveralls.io/r/alcesleo/keymail?branch=master">Coveralls</a>, you can see code coverage statistics for all builds there.</p>
 <h2 id="documentation">Documentation</h2>
 <p>I'm generating this documentation using <a href="https://github.com/tomchristie/mkdocs">MkDocs</a>.</p>
-<pre class="prettyprint well"><code class="bash">pip install mkdocs ghp-import
+<pre class="prettyprint well"><code class="bash"># install tools
+pip install mkdocs ghp-import
 
 # serve the documentation site at localhost:4567
 mkdocs serve
@@ -177,20 +180,22 @@ mkdocs build
 ghp-import -p site
 </code></pre>
 
-<h3 id="publishing">Publishing</h3>
-<p>Just keep the <code>mkdocs.yml</code> in sync and you should be all set.</p>
+<p>Make sure you keep the <code>mkdocs.yml</code> in sync and you should be all set.</p>
 <h2 id="releases">Releases</h2>
 <p>Versioning follows <a href="http://semver.org/">SemVer</a>, except prereleases are
-indicated with a dot, because of RubyGems.(e.g <code>v0.1.0.pre</code>)</p>
+indicated with a dot, because of RubyGems (e.g <code>v0.1.0.pre</code>).</p>
 <h3 id="checklist">Checklist</h3>
 <ul>
 <li>Make sure the tests pass</li>
 <li>Make sure the documentation is correct</li>
-<li>Make sure your working directory is clean</li>
+<li>Make a commit with these contents unless it's done already:<ul>
 <li>Document the high level changes in <code>CHANGELOG.md</code></li>
-<li>Bump the version in <code>lib/keymail/version.rb</code> and commit it</li>
+<li>Bump the version in <code>lib/keymail/version.rb</code></li>
+<li><code>bundle</code> will set the new version in <code>Gemfile.lock</code></li>
+</ul>
+</li>
 <li><code>rake release</code></li>
-<li>If needed, update keymail-example to reflect the changes</li>
+<li>If needed, update keymail-example to reflect the changes, then make a tag with the same version as the release</li>
 </ul>
 </div>
         </div>
