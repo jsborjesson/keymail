@@ -1,5 +1,10 @@
 # Releases
 
+## v0.2.2
+
+- Support configuration with an initializer file
+- Much more complete documentation
+
 ## v0.2.1
 
 - No longer hardcoding `localhost:3000` as the base url for authentication links
