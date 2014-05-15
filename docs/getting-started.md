@@ -19,7 +19,7 @@ Then run this to install it:
 # install the gem
 bundle
 
-# install the gems migrations
+# install the gem's migrations
 rake keymail:install:migrations
 rake db:migrate
 ```
@@ -67,11 +67,9 @@ to set up a couple of routes:
 # config/routes.rb
 Rails.application.routes.draw do
 
-  root 'auth#new'
   post 'request_email', to: 'sessions#request_authentication_email'
 
-  # specifying `as: 'keymail_link_target'` here is very important, it is used
-  # internally to generate the authentication link
+  # keymail_link_target is used iternally
   get  'auth/:url_key', to: 'sessions#validate_authentication_link', as: 'keymail_link_target'
 
 end
