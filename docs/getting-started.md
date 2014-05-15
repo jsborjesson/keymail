@@ -2,10 +2,10 @@
 
 [example app]: https://github.com/alcesleo/keymail-example
 
-This guide will take you through installing and configuring Keymail in your
-Rails application. To see a more realistic example, you can look at the [example app][]
+This guide will take you through installing and configuring Keymail in a
+Rails application. To see a more realistic example, you can look at the [example app][].
 
-## Installation
+## Installating the gem
 
 To install keymail, put this in your `Gemfile`:
 
@@ -13,7 +13,7 @@ To install keymail, put this in your `Gemfile`:
 gem 'keymail'
 ```
 
-Then run this to install it
+Then run this to install it:
 
 ```bash
 # install the gem
@@ -24,7 +24,7 @@ rake keymail:install:migrations
 rake db:migrate
 ```
 
-### Setting up mail
+## Emailing
 
 Your application obviously needs to be able to send emails, if you have not
 already configured this, the fastest way to get started is to use a GMail
@@ -41,7 +41,6 @@ ActionMailer::Base.smtp_settings = {
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
-ActionMailer::Base.default_url_options[:host] = 'localhost:3000'
 ```
 
 _You should **not** commit your passwords to a public Github repo, use
@@ -50,11 +49,11 @@ source control (the [example app][] does this)._
 
 TODO: Setting the "from" email address in initializer
 
-### Using it in your controller
+## Routes
 
-To actually use Keymail you need to wire it up to a controller, at this time this
-is completely manual but this might change in the future. You need to set up
-a couple of routes:
+To actually use Keymail you need to wire it up to a controller, at this time
+this is completely manual but this might change in the future. First you need
+to set up a couple of routes:
 
 ```ruby
 # config/routes.rb
@@ -82,6 +81,7 @@ Rails.application.routes.default_url_options[:host] = 'http://keymail-example.he
 
 Failing to set these will lead to **"Missing host to link to"** errors.
 
+## Controller
 
 Keymail provides you with a service class: `Keymail::Authentication` that you
 can use in your controllers to do everything that keymail does, here is a basic
@@ -105,3 +105,5 @@ class SessionsController < ApplicationController
 
 end
 ```
+
+You can of course see all of this in working code by checking out the [example app][].
