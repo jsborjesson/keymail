@@ -3,15 +3,16 @@ require 'test_helper'
 module Keymail
   describe AuthMailer do
 
+    let(:token) { Factory :token }
+    let(:email) { ActionMailer::Base.deliveries.last }
+    let(:body) { email.body.raw_source }
+
     before do
       # Reset the list of sent email
       ActionMailer::Base.deliveries.clear
       AuthMailer.log_in(token).deliver
     end
 
-    let(:token) { Factory :token }
-    let(:email) { ActionMailer::Base.deliveries.last }
-    let(:body) { email.body.raw_source }
 
     it 'sends the email' do
       ActionMailer::Base.deliveries.wont_be :empty?
@@ -29,7 +30,11 @@ module Keymail
     it 'has the expiration date' do
       body.must_have_content "valid until #{token.expires_at}"
     end
-    # it 'has the optional passcode'
+
+    it 'sends from the configured from_email' do
+      # set in config/initializers/keymail_setup.rb
+      email.from.must_equal ['rails.keymail@gmail.com'] # FIXME: set this here
+    end
 
   end
 end

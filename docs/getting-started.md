@@ -47,7 +47,15 @@ _You should **not** commit your passwords to a public Github repo, use
 something like [Figaro](https://github.com/laserlemon/figaro) to keep it out of
 source control (the [example app][] does this)._
 
-TODO: Setting the "from" email address in initializer
+You also need to tell Keymail that you want to send emails from this address.
+Create a `config/initializers/setup_keymail.rb`:
+
+```ruby
+Keymail.setup do |config|
+  config.from_email = 'your_username@gmail.com'
+end
+```
+
 
 ## Routes
 
