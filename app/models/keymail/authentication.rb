@@ -4,7 +4,7 @@ module Keymail
       # TODO: initializers for expires_at
       raise ArgumentError, 'Email cannot be nil' if email.nil?
 
-      token = Token.create(email: email, expires_at: 10.minutes.since)
+      token = Token.create!(email: email, expires_at: 10.minutes.since)
       AuthMailer.log_in(token).deliver
 
       token
