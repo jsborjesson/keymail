@@ -167,13 +167,13 @@ for factories. It's supposed to be as minimal and readable as possible.</p>
 </code></pre>
 <p>They are also run on <a href="https://travis-ci.org/alcesleo/keymail/builds">Travis CI</a>, you can see test statistics for all builds there.</p>
 <h3 id="code-coverage">Code coverage</h3>
-<p>Is generated automatically every time the tests are run, to open the local statistics run:</p>
-<pre class="prettyprint well"><code>rake coverage
+<p>Is generated automatically into the <code>coverage/</code> folder every time the tests are run, there is a rake task to open them quickly:</p>
+<pre class="prettyprint well"><code>rake dev:coverage
 </code></pre>
 <p>They are also run on <a href="https://coveralls.io/r/alcesleo/keymail?branch=master">Coveralls</a>, you can see code coverage statistics for all builds there.</p>
 <h2 id="documentation">Documentation</h2>
 <p>I'm generating this documentation using <a href="https://github.com/tomchristie/mkdocs">MkDocs</a>.</p>
-<pre class="prettyprint well"><code class="bash"># install tools
+<pre class="prettyprint well"><code class="bash"># make sure the tools are installed
 pip install mkdocs ghp-import
 
 # serve the documentation site at localhost:4567
@@ -186,6 +186,9 @@ mkdocs build
 ghp-import -p site
 </code></pre>
 
+<p>There is also a rake task to quickly build and deploy the docs (the last two commands)</p>
+<pre class="prettyprint well"><code>rake dev:publish_docs
+</code></pre>
 <p>Make sure you keep the <code>mkdocs.yml</code> in sync and you should be all set.</p>
 <h2 id="releases">Releases</h2>
 <p>Versioning follows <a href="http://semver.org/">SemVer</a>, except prereleases are
