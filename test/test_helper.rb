@@ -21,9 +21,6 @@ DatabaseCleaner.strategy = :transaction
 
 Rails.backtrace_cleaner.remove_silencers!
 
-# Load support files
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
-
 class Minitest::Spec
   include ActiveSupport::Testing::Assertions # assert_difference etc...
   include ActiveSupport::Testing::SetupAndTeardown # before, after
