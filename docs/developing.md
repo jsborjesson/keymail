@@ -40,7 +40,7 @@ mkdocs build
 ghp-import -p site
 ```
 
-There is also a rake task to quickly build and deploy the docs (the last two commands)
+There is also a rake task to quickly build and deploy the docs (the last two commands):
 
     rake dev:publish_docs
 
@@ -59,5 +59,6 @@ indicated with a dot, because of RubyGems (e.g `v0.1.0.pre`).
     - Document the high level changes in `CHANGELOG.md`
     - Bump the version in `lib/keymail/version.rb`
     - `bundle` will set the new version in `Gemfile.lock`
+- Merge it into `master`
 - `rake release`
-- If needed, update keymail-example to reflect the changes, then make a tag with the same version as the release
+- If needed, update [keymail-example](https://github.com/alcesleo/keymail-example) to reflect the changes, then make a tag with the same version as the release.
