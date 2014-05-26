@@ -4,18 +4,17 @@ module Keymail
   describe AuthMailer do
 
     let(:token) { Factory :token }
-    let(:email) { ActionMailer::Base.deliveries.last }
+    let(:emails) { ActionMailer::Base.deliveries }
+    let(:email) { emails.last }
     let(:body) { email.body.raw_source }
 
     before do
-      # Reset the list of sent email
-      ActionMailer::Base.deliveries.clear
+      emails.clear
       AuthMailer.log_in(token).deliver
     end
 
-
     it 'sends the email' do
-      ActionMailer::Base.deliveries.wont_be :empty?
+      emails.wont_be :empty?
     end
 
     it 'sends authentication email to the right address' do
@@ -23,7 +22,6 @@ module Keymail
     end
 
     it 'has the log in link' do
-      # TODO: link_to
       body.must_have_content "http://localhost:3000/auth/#{token.url_key}"
     end
 
