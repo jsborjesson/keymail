@@ -159,8 +159,7 @@
 <h1 id="developing">Developing</h1>
 <h2 id="testing">Testing</h2>
 <p>Testing is done with <a href="https://github.com/seattlerb/minitest/">Minitest</a> using
-the spec syntax and <a href="https://github.com/stephencelis/minifacture">Minifacture</a>
-for factories. It's supposed to be as minimal and readable as possible.</p>
+the spec syntax. It's supposed to be as minimal and readable as possible.</p>
 <h3 id="running-the-tests">Running the tests</h3>
 <p>To run all the tests:</p>
 <pre class="prettyprint well"><code>rake test
@@ -198,7 +197,7 @@ indicated with a dot, because of RubyGems (e.g <code>v0.1.0.pre</code>).</p>
 <li>Make sure the tests pass</li>
 <li>Make sure the documentation is updated and deployed</li>
 <li>Make a commit with these contents unless it's done already:<ul>
-<li>Document the high level changes in <code>CHANGELOG.md</code></li>
+<li>Document the high level changes in <code>CHANGELOG.md</code> <em>(you can see the relevant commits like this <code>git log --oneline v0.1.0..HEAD</code>)</em></li>
 <li>Bump the version in <code>lib/keymail/version.rb</code></li>
 <li><code>bundle</code> will set the new version in <code>Gemfile.lock</code></li>
 </ul>
