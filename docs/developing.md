@@ -50,7 +50,7 @@ indicated with a dot, because of RubyGems (e.g `v0.1.0.pre`).
 ### Checklist
 
 - Make sure the tests pass
-- Make sure the documentation is correct
+- Make sure the documentation is updated and deployed
 - Make a commit with these contents unless it's done already:
     - Document the high level changes in `CHANGELOG.md`
     - Bump the version in `lib/keymail/version.rb`
