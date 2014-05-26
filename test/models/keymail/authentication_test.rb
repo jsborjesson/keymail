@@ -3,7 +3,6 @@ require 'test_helper'
 module Keymail
   describe Authentication do
     context '.request' do
-
       let(:email) { 'test@email.com' }
 
       it 'creates a new token' do
@@ -40,7 +39,7 @@ module Keymail
       end
 
       context 'authenticated' do
-        let(:token) { Factory :token }
+        let(:token)    { Factory :token }
         let(:response) { Authentication.verify_url_key(token.url_key) }
 
         it 'is authenticated' do
@@ -55,11 +54,10 @@ module Keymail
           response.wont_be :expired?
         end
 
-        # first time, redirect...
       end
 
       context 'expired' do
-        let(:token) { Factory :token, expires_at: 10.minutes.ago }
+        let(:token)    { Factory :token, expires_at: 10.minutes.ago }
         let(:response) { Authentication.verify_url_key(token.url_key) }
 
         it 'is not authenticated' do
