@@ -67,6 +67,12 @@
                 
                 
                     <li >
+                        <a href="../advanced/">Advanced</a>
+                    </li>
+                
+                
+                
+                    <li >
                         <a href="../faq/">FAQ</a>
                     </li>
                 
@@ -112,7 +118,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../faq/">
+                    <a rel="prev" href="../advanced/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -146,6 +152,8 @@
             <li><a href="#routes">Routes</a></li>
         
             <li><a href="#controller">Controller</a></li>
+        
+            <li><a href="#customizing-the-email">Customizing the email</a></li>
         
     
     </ul>
@@ -189,9 +197,11 @@ like this:</p>
 something like <a href="https://github.com/laserlemon/figaro">Figaro</a> to keep it out of
 source control (the <a href="https://github.com/alcesleo/keymail-example">example app</a> does this).</em></p>
 <p>You also need to tell Keymail that you want to send emails from this address.
-Create a <code>config/initializers/setup_keymail.rb</code>:</p>
+Here you can also configure how long the email should be valid. Create a
+<code>config/initializers/setup_keymail.rb</code>:</p>
 <pre class="prettyprint well"><code class="ruby">Keymail.setup do |config|
   config.from_email = 'your_username@gmail.com'
+  config.expiration_time = 10.minutes # this is the default
 end
 </code></pre>
 
@@ -239,6 +249,22 @@ use case (without error handling!):</p>
   end
 
 end
+</code></pre>
+
+<h2 id="customizing-the-email">Customizing the email</h2>
+<p>The contents of the email can be customized however you want, just <strong>don't
+forget to include the authentication link!</strong></p>
+<p>You can override the template used by simply creating a new template file in
+<code>app/views/keymail/auth_mailer/log_in.html.erb</code> to create an HTML template.</p>
+<p>Here is how the template in the example app looks:</p>
+<pre class="prettyprint well"><code class="erb">&lt;p&gt;&lt;strong&gt;Thanks for trying out &lt;%= link_to 'Keymail', 'https://github.com/alcesleo/keymail' %&gt;!&lt;/strong&gt;&lt;p&gt;
+
+&lt;p&gt;To log in, simply click this link:&lt;/p&gt;
+
+&lt;!-- Don't forget to add the link! --&gt;
+&lt;p&gt;&lt;%= @token.url %&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;This keymail is valid until &lt;%= @token.expires_at %&gt;&lt;/i&gt;&lt;/p&gt;
 </code></pre>
 
 <p>You can of course see all of this in working code by checking out the <a href="https://github.com/alcesleo/keymail-example">example app</a>.</p>

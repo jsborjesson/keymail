@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-        <title>FAQ - Keymail</title>
+        <title>Advanced - Keymail</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -66,14 +66,14 @@
                 
                 
                 
-                    <li >
-                        <a href="../advanced/">Advanced</a>
+                    <li class="active">
+                        <a href="./">Advanced</a>
                     </li>
                 
                 
                 
-                    <li class="active">
-                        <a href="./">FAQ</a>
+                    <li >
+                        <a href="../faq/">FAQ</a>
                     </li>
                 
                 
@@ -113,12 +113,12 @@
                 
                 
                 <li >
-                    <a rel="next" href="../advanced/">
+                    <a rel="next" href="../getting-started/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../developing/">
+                    <a rel="prev" href="../faq/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -143,72 +143,43 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#not-yet-faqs">Not yet FAQ:s</a></li>
+        <li class="main active"><a href="#advanced">Advanced</a></li>
         
-            <li><a href="#why-not-just-use-passwords">Why not just use passwords?</a></li>
-        
-            <li><a href="#why-not-just-use-oauth">Why not just use OAuth?</a></li>
-        
-            <li><a href="#but-this-requires-my-clients-to-have-an-email">But this requires my clients to have an email!</a></li>
-        
-            <li><a href="#email-is-also-a-third-party">Email is also a third party!</a></li>
-        
-            <li><a href="#why-not-hack-devise-to-do-this">Why not hack Devise to do this?</a></li>
-        
-            <li><a href="#but-this-means-i-cant-collect-lots-of-user-data-when-registering">But this means I can't collect lots of user data when registering!</a></li>
-        
-            <li><a href="#why-not-to-use-keymail">Why not to use Keymail</a></li>
-        
-            <li><a href="#it-is-a-hassle-to-log-in-to-my-email-every-time">It is a hassle to log in to my email every time!</a></li>
-        
-            <li><a href="#i-still-need-a-password-for-my-email">I still need a password for my email!</a></li>
-        
-            <li><a href="#but-if-someone-gets-access-to-the-email-address-they-can-log-in">But if someone gets access to the email address they can log in!</a></li>
+            <li><a href="#api-documentation">API documentation</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h2 id="not-yet-faqs">Not yet FAQ:s</h2>
-<h3 id="why-not-just-use-passwords">Why not just use passwords?</h3>
-<p>Your users are probably terrible at both coming up with and remembering good passwords,
-this saves them the effort and you won't have to implement "reset password" functionality
-(which is basically what this does every time).</p>
-<h3 id="why-not-just-use-oauth">Why not just use OAuth?</h3>
-<p>OAuth makes you dependent on third parties, usually multiple since you probably need to implement
-more than one provider to cover all of your client base (not everyone has Twitter / Facebook), and
-in worst case you still have a fall back on using passwords if you really need to cover everyone.</p>
-<h3 id="but-this-requires-my-clients-to-have-an-email">But this requires my clients to have an email!</h3>
-<p>I think it's safe to assume that anyone using any kind of webservice will have an email address.</p>
-<h3 id="email-is-also-a-third-party">Email is also a third party!</h3>
-<p>True, but in this case the user can choose herself, or even run her own
-if she is very paranoid about security, and unlike OAuth you only have to implement
-<strong>one</strong> adapter to take care of all of these "third parties".</p>
-<h3 id="why-not-hack-devise-to-do-this">Why not hack Devise to do this?</h3>
-<p>That is probably a great way to go, please do! Devise is big and I wanted to build something lighter from scratch.</p>
-<h3 id="but-this-means-i-cant-collect-lots-of-user-data-when-registering">But this means I can't collect lots of user data when registering!</h3>
-<p>Yep, your users will probably be very pleased by the absence of a long registration form,
-if you need more data about a user I would recommend redirecting them to a
-profile settings page after the first login.</p>
-<h3 id="why-not-to-use-keymail">Why not to use Keymail</h3>
-<p>OAuth has a couple of strong advantages over this approach, the main one being that you can gather
-information about a user without her interference, Keymail is practically equivalent to passwords
-in this case because you will need to ask the user to enter any more info you need.</p>
-<p>If you want this functionality, you should use OAuth instead, but in a lot of
-cases when OAuth is used, it either doesn't use this extra info, or
-require more permissions than it actually needs (which looks suspicious to
-users).</p>
-<h3 id="it-is-a-hassle-to-log-in-to-my-email-every-time">It is a hassle to log in to my email every time!</h3>
-<p>I think most people are constantly logged in to their email these days, and get email instantly.
-Even if they don't you just need to do this once per device, if you own it you don't need
-to log out.</p>
-<h3 id="i-still-need-a-password-for-my-email">I still need a password for my email!</h3>
-<p>Yes that's true, I recommend using 2 (or 3) step authentication for this to be really secure.
-This is not a silver bullet, but I think that <strong>reducing</strong> the number of passwords you need
-is a good thing.</p>
-<h3 id="but-if-someone-gets-access-to-the-email-address-they-can-log-in">But if someone gets access to the email address they can log in!</h3>
-<p>True, but this is already a threat to most sites due to the password reset functionality.</p>
+<h1 id="advanced">Advanced</h1>
+<h2 id="api-documentation">API documentation</h2>
+<h3 id="keymailauthentication"><code>Keymail::Authentication</code></h3>
+<p>This is the service class that you will be using for pretty much everything,
+its interface is defined as follows:</p>
+<h3 id="keymailauthenticationrequestemail"><code>Keymail::Authentication.request(email)</code></h3>
+<p><strong>Sends an authentication email to an email address.</strong></p>
+<p>It creates a token in the database with authentication data and
+sends an email to the specified address.</p>
+<p>Returns the <code>Keymail::Token</code> used on success.</p>
+<p>Raises <code>ArgumentError</code> if email is <code>nil</code>.</p>
+<p>Raises any exceptions caused by <code>ActionMailer</code>.
+Note: you might need to enable them in your <code>config/environments/</code> settings
+by adding/changing this line:</p>
+<pre class="prettyprint well"><code class="ruby">config.action_mailer.raise_delivery_errors = true
+</code></pre>
+
+<h3 id="keymailauthenticationvalidate_url_keyurl_key"><code>Keymail::Authentication.validate_url_key(url_key)</code></h3>
+<p><strong>Checks if an authentication link is valid.</strong></p>
+<p>The <code>url_key</code> is only the authentication string part of the URL.</p>
+<p>It destroys the token so it cannot be used again, no matter what happens.</p>
+<p>Returns an object with the following methods:</p>
+<ul>
+<li><code>authenticated?</code></li>
+<li><code>email</code> <em>(unless token was invalid)</em></li>
+<li><code>expired?</code> <em>(unless token was invalid)</em></li>
+</ul>
+<p>Note that if the token has already been used, it is deleted and therefore considered invalid.</p>
 </div>
         </div>
 
