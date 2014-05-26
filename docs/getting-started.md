@@ -58,7 +58,6 @@ Keymail.setup do |config|
 end
 ```
 
-
 ## Routes
 
 To actually use Keymail you need to wire it up to a controller, at this time
@@ -112,6 +111,27 @@ class SessionsController < ApplicationController
   end
 
 end
+```
+
+## Customizing the email
+
+The contents of the email can be customized however you want, just **don't
+forget to include the authentication link!**
+
+You can override the template used by simply creating a new template file in
+`app/views/keymail/auth_mailer/log_in.html.erb` to create an HTML template.
+
+Here is how the template in the example app looks:
+
+```erb
+<p><strong>Thanks for trying out <%= link_to 'Keymail', 'https://github.com/alcesleo/keymail' %>!</strong><p>
+
+<p>To log in, simply click this link:</p>
+
+<!-- Don't forget to add the link! -->
+<p><%= @token.url %></p>
+
+<p><i>This keymail is valid until <%= @token.expires_at %></i></p>
 ```
 
 You can of course see all of this in working code by checking out the [example app][].
