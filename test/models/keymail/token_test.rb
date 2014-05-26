@@ -18,7 +18,7 @@ module Keymail
     end
 
     it 'is expired after its expiry date' do
-      token = Factory.build :token, expires_at: 10.minutes.ago
+      token = Factory.build :token, expires_at: 1.second.ago
       token.must_be :expired?
     end
   end
