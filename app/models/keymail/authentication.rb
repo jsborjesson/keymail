@@ -1,7 +1,6 @@
 module Keymail
   module Authentication
     def self.request(email)
-      # TODO: initializers for expires_at
       raise ArgumentError, 'Email cannot be nil' if email.nil?
 
       token = Token.create!(email: email, expires_at: Keymail.config.expiration_time.since)
