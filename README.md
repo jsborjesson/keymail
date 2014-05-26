@@ -13,11 +13,13 @@ _Inspired by [this article](http://notes.xoxco.com/post/27999787765/is-it-time-f
 
 ## Example email
 
+> **Thanks for trying out [Keymail](https://github.com/alcesleo/keymail)!**
+>
 > To log in, simply click this link:
 >
-> http://keymail-example.herokuapp.com/auth/jMfEzFExSq1qI-TIHltkWw
+> <http://localhost:3000/auth/UdfQrWq_LCw4oc464rXtyQ>
 >
-> This keymail is valid until 2014-05-23 15:59:44 UTC
+> _This keymail is valid until 2014-05-26 10:37:07 UTC_
 
 _(The email can be customized however you want)_
 
