@@ -56,7 +56,7 @@ indicated with a dot, because of RubyGems (e.g `v0.1.0.pre`).
 - Make sure the tests pass
 - Make sure the documentation is updated and deployed
 - Make a commit with these contents unless it's done already:
-    - Document the high level changes in `CHANGELOG.md`
+    - Document the high level changes in `CHANGELOG.md` _(you can see the relevant commits like this `git log --oneline v0.1.0..HEAD`)_
     - Bump the version in `lib/keymail/version.rb`
     - `bundle` will set the new version in `Gemfile.lock`
 - Merge it into `master`
