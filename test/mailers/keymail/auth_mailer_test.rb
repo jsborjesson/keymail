@@ -3,13 +3,16 @@ require 'test_helper'
 module Keymail
   describe AuthMailer do
 
-    let(:token) { Factory :token }
-    let(:emails) { ActionMailer::Base.deliveries }
-    let(:email) { emails.last }
-    let(:body) { email.body.raw_source }
+    let(:token)      { Factory :token }
+    let(:emails)     { ActionMailer::Base.deliveries }
+    let(:email)      { emails.last }
+    let(:body)       { email.body.raw_source }
+    let(:from_email) { 'test@email.com' }
 
     before do
       emails.clear
+      Keymail.config.from_email = from_email
+
       AuthMailer.log_in(token).deliver
     end
 
@@ -30,8 +33,7 @@ module Keymail
     end
 
     it 'sends from the configured from_email' do
-      # set in config/initializers/keymail_setup.rb
-      email.from.must_equal ['rails.keymail@gmail.com'] # FIXME: set this here
+      email.from.must_equal [from_email]
     end
 
   end

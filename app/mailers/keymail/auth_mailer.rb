@@ -1,11 +1,10 @@
 module Keymail
   class AuthMailer < ActionMailer::Base
-    default from: Keymail.config.from_email
-
     def log_in(token)
       @token = token
 
-      mail to: token.email
+      mail to: token.email,
+           from: Keymail.config.from_email
     end
   end
 end
