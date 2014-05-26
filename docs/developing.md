@@ -30,7 +30,7 @@ I'm generating this documentation using [MkDocs](https://github.com/tomchristie/
 # make sure the tools are installed
 pip install mkdocs ghp-import
 
-# serve the documentation site at localhost:4567
+# serve the documentation site at localhost:8000
 mkdocs serve
 
 # generate docs in the site/ directory
