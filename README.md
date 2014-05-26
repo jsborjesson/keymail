@@ -37,3 +37,7 @@ _The example app might take a long time to load the first time, it's on a free H
 [example-source]: https://github.com/alcesleo/keymail-example
 [rubygems]:       https://rubygems.org/gems/keymail
 
+## Contributing
+
+**Yes, please do!** Any issues or pull requests are welcome, a PR is the start of
+the conversation, not the end of one.
