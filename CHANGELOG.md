@@ -1,5 +1,9 @@
 # Releases
 
+## v0.3.1
+
+- Refactorings code style tweaks
+
 ## v0.3.0
 
 - Expiration time of keymails is now configurable
