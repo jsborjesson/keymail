@@ -7,16 +7,18 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 SimpleCov.start 'rails'
 
-# Configure Rails Environment
+
+# Load rails
 ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-require "rails/test_help"
 
+
+require "rails/test_help"
 require "factories"
+
 
 Turn.config.natural = true
 
-Rails.backtrace_cleaner.remove_silencers!
 
 class Minitest::Spec
   include ActiveSupport::Testing::Assertions       # assert_difference etc...
@@ -32,6 +34,7 @@ class Minitest::Spec
   after { DatabaseCleaner.clean }
 end
 
+
 # A bit more dry validation tests
 #     m = Message.create(text: '')
 #     m.must_have_invalid :text
@@ -43,12 +46,13 @@ module Minitest::Assertions
 end
 ActiveRecord::Base.infect_an_assertion :assert_has_invalid, :must_have_invalid
 
+
 class Proc
   infect_an_assertion :assert_difference, :must_change
   infect_an_assertion :assert_no_difference, :wont_change
 end
 
-# Make the controller methods (get, post etc...) work
+
 class ControllerSpec < Minitest::Spec
   include Rails.application.routes.url_helpers
   include ActionController::TestCase::Behavior
@@ -59,7 +63,7 @@ class ControllerSpec < Minitest::Spec
 end
 Minitest::Spec.register_spec_type(/Controller$/, ControllerSpec)
 
-# Set up Capybara
+
 require 'capybara/rails'
 class AcceptanceSpec < MiniTest::Spec
   include Rails.application.routes.url_helpers
