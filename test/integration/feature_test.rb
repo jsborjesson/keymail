@@ -24,6 +24,4 @@ describe 'Feature Integration' do
     page.must_have_content 'failed'
   end
 
-  # it 'logs in a user with an optional passcode'
-
 end
