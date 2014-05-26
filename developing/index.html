@@ -176,7 +176,7 @@ for factories. It's supposed to be as minimal and readable as possible.</p>
 <pre class="prettyprint well"><code class="bash"># make sure the tools are installed
 pip install mkdocs ghp-import
 
-# serve the documentation site at localhost:4567
+# serve the documentation site at localhost:8000
 mkdocs serve
 
 # generate docs in the site/ directory
@@ -186,7 +186,7 @@ mkdocs build
 ghp-import -p site
 </code></pre>
 
-<p>There is also a rake task to quickly build and deploy the docs (the last two commands)</p>
+<p>There is also a rake task to quickly build and deploy the docs (the last two commands):</p>
 <pre class="prettyprint well"><code>rake dev:publish_docs
 </code></pre>
 <p>Make sure you keep the <code>mkdocs.yml</code> in sync and you should be all set.</p>
@@ -203,8 +203,9 @@ indicated with a dot, because of RubyGems (e.g <code>v0.1.0.pre</code>).</p>
 <li><code>bundle</code> will set the new version in <code>Gemfile.lock</code></li>
 </ul>
 </li>
+<li>Merge it into <code>master</code></li>
 <li><code>rake release</code></li>
-<li>If needed, update keymail-example to reflect the changes, then make a tag with the same version as the release</li>
+<li>If needed, update <a href="https://github.com/alcesleo/keymail-example">keymail-example</a> to reflect the changes, then make a tag with the same version as the release.</li>
 </ul>
 </div>
         </div>
