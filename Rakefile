@@ -21,14 +21,23 @@ end
 
 task default: :test
 
+### Custom development tasks
 
-# Development tasks
-desc 'Opens the Coverage statistics'
-task :coverage do
-  if File.exists?('coverage/index.html')
-    `open coverage/index.html`
-  else
-    puts 'No coverage info generated, run the tests first!'
+namespace :dev do
+
+  desc 'Opens the Coverage statistics'
+  task :coverage do
+    if File.exists?('coverage/index.html')
+      `open coverage/index.html`
+    else
+      puts 'No coverage info generated, run the tests first!'
+    end
   end
-end
 
+  desc 'Publish the documentation to Github pages'
+  task :publish_docs do
+    sh 'mkdocs build'
+    sh 'ghp-import -p site'
+  end
+
+end

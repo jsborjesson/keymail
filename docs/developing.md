@@ -16,9 +16,9 @@ They are also run on [Travis CI](https://travis-ci.org/alcesleo/keymail/builds),
 
 ### Code coverage
 
-Is generated automatically every time the tests are run, to open the local statistics run:
+Is generated automatically into the `coverage/` folder every time the tests are run, there is a rake task to open them quickly:
 
-    rake coverage
+    rake dev:coverage
 
 They are also run on [Coveralls](https://coveralls.io/r/alcesleo/keymail?branch=master), you can see code coverage statistics for all builds there.
 
@@ -27,7 +27,7 @@ They are also run on [Coveralls](https://coveralls.io/r/alcesleo/keymail?branch=
 I'm generating this documentation using [MkDocs](https://github.com/tomchristie/mkdocs).
 
 ```bash
-# install tools
+# make sure the tools are installed
 pip install mkdocs ghp-import
 
 # serve the documentation site at localhost:4567
@@ -39,6 +39,10 @@ mkdocs build
 # publish to github pages
 ghp-import -p site
 ```
+
+There is also a rake task to quickly build and deploy the docs (the last two commands)
+
+    rake dev:publish_docs
 
 Make sure you keep the `mkdocs.yml` in sync and you should be all set.
 
