@@ -1,6 +1,8 @@
 # Advanced
 
-## `Keymail::Authentication`
+## API documentation
+
+### `Keymail::Authentication`
 
 This is the service class that you will be using for pretty much everything,
 its interface is defined as follows:
@@ -8,7 +10,7 @@ its interface is defined as follows:
 
 ### `Keymail::Authentication.request(email)`
 
-**Sends an authentication email to an email.**
+**Sends an authentication email to an email address.**
 
 It creates a token in the database with authentication data and
 sends an email to the specified address.

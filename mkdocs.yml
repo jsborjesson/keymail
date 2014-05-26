@@ -3,6 +3,7 @@ repo_url: https://github.com/alcesleo/keymail/
 pages:
 - ['index.md', 'Home']
 - ['getting-started.md', 'Getting Started']
+- ['advanced.md', 'Advanced']
 - ['faq.md', 'FAQ']
 - ['developing.md', 'Developing']
 - ['project/vision.md', 'Project', 'Vision']
