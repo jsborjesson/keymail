@@ -1,5 +1,10 @@
 # Releases
 
+## v0.3.0
+
+- Expiration time of keymails is now configurable
+- Configuration no longer interfering with global config namespace
+
 ## v0.2.2
 
 - Support configuration with an initializer file
