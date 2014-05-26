@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["lagginglion@gmail.com"]
   s.homepage    = "https://github.com/alcesleo/keymail"
   s.summary     = "Forget passwords, authenticate via email!"
-  s.description = "Instead of using passwords, keymail sends emails with a link that logs in your user automatically."
+  s.description = "Instead of using passwords, keymail sends an email with a link that logs your user in automatically."
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
