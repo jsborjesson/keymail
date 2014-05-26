@@ -21,6 +21,11 @@ module Keymail
       it 'raises an error if email is nil' do
         -> { Authentication.request(nil) }.must_raise ArgumentError
       end
+
+      it 'sets the expiration time to the configured one' do
+        Keymail.config.expiration_time = 1.minute
+        Authentication.request(email).expires_at.must_be_close_to 1.minute.since, 0.1
+      end
     end
 
     context '.verify_url' do

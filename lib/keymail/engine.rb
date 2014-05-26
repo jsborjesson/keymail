@@ -7,15 +7,23 @@ module Keymail
       g.assets         false
       g.helper         false
     end
-
   end
 
   def self.setup(&block)
-    yield @config ||= Keymail::Engine::Configuration.new
+    yield @config ||= Keymail::Configuration.new
   end
 
-  # FIXME: this should be namespaced
   def self.config
-    Rails.application.config
+    @config
+  end
+
+  class Configuration
+    attr_accessor :from_email,
+                  :expiration_time
+
+    def initialize
+      # Set defaults here
+      self.expiration_time = 10.minutes
+    end
   end
 end

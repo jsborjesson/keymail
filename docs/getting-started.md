@@ -48,11 +48,13 @@ something like [Figaro](https://github.com/laserlemon/figaro) to keep it out of
 source control (the [example app][] does this)._
 
 You also need to tell Keymail that you want to send emails from this address.
-Create a `config/initializers/setup_keymail.rb`:
+Here you can also configure how long the email should be valid. Create a
+`config/initializers/setup_keymail.rb`:
 
 ```ruby
 Keymail.setup do |config|
   config.from_email = 'your_username@gmail.com'
+  config.expiration_time = 10.minutes # this is the default
 end
 ```
 
