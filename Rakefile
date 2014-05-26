@@ -30,7 +30,7 @@ namespace :dev do
     if File.exists?('coverage/index.html')
       `open coverage/index.html`
     else
-      puts 'No coverage info generated, run the tests first!'
+      puts 'No coverage info generated, run `rake test` first!'
     end
   end
 
