@@ -10,12 +10,16 @@ load "rails/tasks/engine.rake"
 Bundler::GemHelper.install_tasks
 
 require "rake/testtask"
-
 Rake::TestTask.new(:test) do |t|
   t.libs << "lib"
   t.libs << "test"
   t.pattern = "test/**/*_test.rb"
   t.verbose = false
+end
+
+require "rubocop/rake_task"
+RuboCop::RakeTask.new(:style) do |t|
+  t.options = ["--display-cop-names"]
 end
 
 task default: :test
