@@ -3,7 +3,8 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
-  gem 'pry'
+  gem "pry"
+  gem "rubocop"
 end
 
 group :test do

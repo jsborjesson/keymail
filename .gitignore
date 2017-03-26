@@ -9,3 +9,4 @@ test/dummy/config/initializers/setup_mail.rb
 coverage/
 site/
 *.gem
+.rubocop-https---raw-githubusercontent-com-alcesleo-rubocop-config-master--rubocop-yml
