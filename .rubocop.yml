@@ -1,2 +1,21 @@
 inherit_from:
   - https://raw.githubusercontent.com/alcesleo/rubocop-config/master/.rubocop.yml
+
+### Disable
+
+AllCops:
+  Exclude:
+    - "test/dummy/db/schema.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_test.rb"
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - "test/test_helper.rb"
+
+Metrics/LineLength:
+  Exclude:
+    - "bin/rails"
+    - "test/dummy/config/initializers/secret_token.rb"

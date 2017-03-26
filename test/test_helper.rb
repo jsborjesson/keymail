@@ -26,8 +26,14 @@ class Minitest::Spec
   end
 
   DatabaseCleaner.strategy = :transaction
-  before do DatabaseCleaner.start end
-  after { DatabaseCleaner.clean }
+
+  before do
+    DatabaseCleaner.start
+  end
+
+  after do
+    DatabaseCleaner.clean
+  end
 end
 
 # A bit more dry validation tests

@@ -18,8 +18,6 @@ module Keymail
       Success.new(token)
     end
 
-    private
-
     def self.find_and_destroy_token(url_key)
       token = Token.find_by(url_key: url_key)
 
