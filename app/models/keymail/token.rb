@@ -16,7 +16,7 @@ module Keymail
     def generate_token
       begin
         self.url_key = SecureRandom.urlsafe_base64
-      end while Token.exists?(url_key: self.url_key)
+      end while Token.exists?(url_key: url_key)
     end
   end
 end

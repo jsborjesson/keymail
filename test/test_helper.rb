@@ -1,24 +1,20 @@
 # Code coverage
-require 'simplecov'
-require 'coveralls'
+require "simplecov"
+require "coveralls"
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
 ]
-SimpleCov.start 'rails'
-
+SimpleCov.start "rails"
 
 # Load rails
 ENV["RAILS_ENV"] = "test"
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-
+require File.expand_path("../dummy/config/environment.rb", __FILE__)
 
 require "rails/test_help"
 require "factories"
 
-
 Turn.config.natural = true
-
 
 class Minitest::Spec
   include ActiveSupport::Testing::Assertions       # assert_difference etc...
@@ -26,14 +22,13 @@ class Minitest::Spec
 
   # Support rspec-style context-blocks
   class << self
-    alias_method :context, :describe
+    alias context describe
   end
 
   DatabaseCleaner.strategy = :transaction
-  before { DatabaseCleaner.start }
+  before do DatabaseCleaner.start end
   after { DatabaseCleaner.clean }
 end
-
 
 # A bit more dry validation tests
 #     m = Message.create(text: '')
@@ -46,12 +41,10 @@ module Minitest::Assertions
 end
 ActiveRecord::Base.infect_an_assertion :assert_has_invalid, :must_have_invalid
 
-
 class Proc
   infect_an_assertion :assert_difference, :must_change
   infect_an_assertion :assert_no_difference, :wont_change
 end
-
 
 class ControllerSpec < Minitest::Spec
   include Rails.application.routes.url_helpers
@@ -63,8 +56,7 @@ class ControllerSpec < Minitest::Spec
 end
 Minitest::Spec.register_spec_type(/Controller$/, ControllerSpec)
 
-
-require 'capybara/rails'
+require "capybara/rails"
 class AcceptanceSpec < MiniTest::Spec
   include Rails.application.routes.url_helpers
   include Capybara::DSL

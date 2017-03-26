@@ -1,20 +1,19 @@
-require 'test_helper'
+require "test_helper"
 
 describe AuthController do
+  let(:test_email) { "test@email.com" }
 
-  let(:test_email) { 'test@email.com' }
-
-  it 'renders the form' do
+  it "renders the form" do
     get :new
     assert_template :new
   end
 
-  it 'redirects to form if no email is posted' do
+  it "redirects to form if no email is posted" do
     post :request_email
     assert_redirected_to :root
   end
 
-  it 'sends an email to the right address' do
+  it "sends an email to the right address" do
     post :request_email, email: test_email
 
     ActionMailer::Base.deliveries.wont_be :empty?
@@ -23,18 +22,18 @@ describe AuthController do
     assert_template :request_email
   end
 
-  it 'redirects to success page with valid token' do
+  it "redirects to success page with valid token" do
     get :validate_link, url_key: valid_token.url_key
 
     assert_redirected_to :success
   end
 
-  it 'redirects to error page with invalid token' do
-    get :validate_link, url_key: 'invalid_url_key'
+  it "redirects to error page with invalid token" do
+    get :validate_link, url_key: "invalid_url_key"
     assert_redirected_to :fail
   end
 
-  it 'redirects to error page with expired token' do
+  it "redirects to error page with expired token" do
     get :validate_link, url_key: expired_token.url_key
     assert_redirected_to :fail
   end
@@ -46,5 +45,4 @@ describe AuthController do
   def valid_token
     Factory :token
   end
-
 end

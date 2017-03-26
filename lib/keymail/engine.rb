@@ -9,7 +9,7 @@ module Keymail
     end
   end
 
-  def self.setup(&block)
+  def self.setup
     yield @config ||= Keymail::Configuration.new
   end
 

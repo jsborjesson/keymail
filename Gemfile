@@ -8,12 +8,12 @@ group :development do
 end
 
 group :test do
-  gem 'sqlite3'
-  gem 'minitest'
-  gem 'minifacture'
-  gem 'database_cleaner'
-  gem 'capybara_minitest_spec'
-  gem 'capybara-email'
-  gem 'coveralls', require: false
-  gem 'turn'
+  gem "capybara-email"
+  gem "capybara_minitest_spec"
+  gem "coveralls", require: false
+  gem "database_cleaner"
+  gem "minifacture"
+  gem "minitest"
+  gem "sqlite3"
+  gem "turn"
 end

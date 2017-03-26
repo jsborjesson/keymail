@@ -1,7 +1,5 @@
 class AuthController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def request_email
     if params[:email].nil?
@@ -20,16 +18,13 @@ class AuthController < ApplicationController
     else
       redirect_to :fail
     end
-
   end
 
-  def fail
-  end
+  def fail; end
 
   def success
     @email = session[:success_email]
   end
-
 
   # def validate_passcode
 end
